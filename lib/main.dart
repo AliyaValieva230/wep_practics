@@ -101,27 +101,46 @@ class LibraryApp extends StatelessWidget {
         ),
         routerConfig: router,
         builder: (context, child) {
-          return FocusTraversalGroup(
-            policy: OrderedTraversalPolicy(),
-            child: Column(
-              children: [
-                if (!conn.isOnline)
-                  MaterialBanner(
-                    backgroundColor: Colors.red.shade100,
-                    leading: const Icon(Icons.wifi_off),
-                    content: const Text(
-                      'Нет соединения с сервером. '
-                      'Повторная попытка выполняется автоматически.',
+          final width = MediaQuery.sizeOf(context).width;
+          final scale = _uiScaleForWidth(width);
+          final base = MediaQuery.of(context);
+
+          return MediaQuery(
+            data: base.copyWith(
+              textScaler: TextScaler.linear(scale),
+            ),
+            child: FocusTraversalGroup(
+              policy: OrderedTraversalPolicy(),
+              child: Column(
+                children: [
+                  if (!conn.isOnline)
+                    MaterialBanner(
+                      backgroundColor: Colors.red.shade100,
+                      leading: const Icon(Icons.wifi_off),
+                      content: const Text(
+                        'Нет соединения с сервером. '
+                        'Повторная попытка выполняется автоматически.',
+                      ),
+                      actions: const [SizedBox.shrink()],
                     ),
-                    actions: const [SizedBox.shrink()],
-                  ),
-                const SessionWarningBanner(),
-                Expanded(child: child ?? const SizedBox.shrink()),
-              ],
+                  const SessionWarningBanner(),
+                  Expanded(child: child ?? const SizedBox.shrink()),
+                ],
+              ),
             ),
           );
         },
       ),
     );
+  }
+
+  /// Масштаб интерфейса в зависимости от ширины окна.
+  /// На телефоне 1.0, на мониторе 1.25, на 4К — 1.5.
+  static double _uiScaleForWidth(double width) {
+    if (width < 600) return 1.0;
+    if (width < 1000) return 1.0;
+    if (width < 1400) return 1.15;
+    if (width < 1800) return 1.25;
+    return 1.4;
   }
 }
