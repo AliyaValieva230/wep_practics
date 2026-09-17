@@ -1,0 +1,45 @@
+﻿00:00 +0: loading C:/dart_projects/flutter_projects/wep_practics/test/widgets_test.dart
+00:00 +0: BookList: ╤Б╨╛╤Б╤В╨╛╤П╨╜╨╕╨╡ ╨╖╨░╨│╤А╤Г╨╖╨║╨╕ ╨┐╨╛╨║╨░╨╖╤Л╨▓╨░╨╡╤В ╨╕╨╜╨┤╨╕╨║╨░╤В╨╛╤А
+00:01 +1: BookList: ╨┐╤Г╤Б╤В╨╛╨╣ ╤А╨╡╨╖╤Г╨╗╤М╤В╨░╤В ╨┐╨╛╨║╨░╨╖╤Л╨▓╨░╨╡╤В ╤В╨╡╨║╤Б╤В
+00:01 +2: BookList: ╨╛╤И╨╕╨▒╨║╨░ ╨┐╨╛╨║╨░╨╖╤Л╨▓╨░╨╡╤В ╨║╨╜╨╛╨┐╨║╤Г "╨Я╨╛╨▓╤В╨╛╤А╨╕╤В╤М"
+00:01 +3: BookForm: ╨┐╤Г╤Б╤В╨░╤П ╤Д╨╛╤А╨╝╨░ ╨╜╨╡ ╨╛╤В╨┐╤А╨░╨▓╨╗╤П╨╡╤В╤Б╤П
+00:01 +4: AuthorList: ╨║╨╜╨╛╨┐╨║╨░ "╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М" ╤Б╨║╤А╤Л╤В╨░ ╨┤╨╗╤П reader
+00:02 +5: AuthorList: ╨║╨╜╨╛╨┐╨║╨░ "╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М" ╨┐╨╛╨║╨░╨╖╨░╨╜╨░ ╨┤╨╗╤П librarian
+тХРтХРтХб EXCEPTION CAUGHT BY RENDERING LIBRARY тХЮтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХР
+The following assertion was thrown during layout:
+A RenderFlex overflowed by 17 pixels on the right.
+
+The relevant error-causing widget was:
+  AppBar
+  AppBar:file:///C:/dart_projects/flutter_projects/wep_practics/lib/screens/author_list_screen.dart:43:21
+
+The overflowing RenderFlex has an orientation of Axis.horizontal.
+The edge of the RenderFlex that is overflowing has been marked in the rendering with a yellow and
+black striped pattern. This is usually caused by the contents being too big for the RenderFlex.
+Consider applying a flex factor (e.g. using an Expanded widget) to force the children of the
+RenderFlex to fit within the available space instead of being sized to their natural size.
+This is considered an error condition because it indicates that there is content that cannot be
+seen. If the content is legitimately bigger than the available space, consider clipping it with a
+ClipRect widget before putting it in the flex, or using a scrollable container rather than a Flex,
+like a ListView.
+The specific RenderFlex in question is: RenderFlex#268d1 relayoutBoundary=up19 OVERFLOWING:
+  creator: Row тЖР Padding тЖР IconTheme тЖР Builder тЖР IconButtonTheme тЖР LayoutId-[<_ToolbarSlot.trailing>]
+    тЖР CustomMultiChildLayout тЖР NavigationToolbar тЖР DefaultTextStyle тЖР IconTheme тЖР Builder тЖР
+    CustomSingleChildLayout тЖР тЛп
+  parentData: offset=Offset(0.0, 0.0) (can use size)
+  constraints: BoxConstraints(0.0<=w<=599.0, 0.0<=h<=36.0)
+  size: Size(599.0, 36.0)
+  direction: horizontal
+  mainAxisAlignment: start
+  mainAxisSize: min
+  crossAxisAlignment: center
+  textDirection: ltr
+  verticalDirection: down
+  spacing: 0.0
+тЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧдтЧвтЧд
+тХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХРтХР
+00:02 +5 -1: AuthorList: ╨║╨╜╨╛╨┐╨║╨░ "╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М" ╨┐╨╛╨║╨░╨╖╨░╨╜╨░ ╨┤╨╗╤П librarian [E]
+  Test failed. See exception logs above.
+  The test description was: AuthorList: ╨║╨╜╨╛╨┐╨║╨░ "╨Ф╨╛╨▒╨░╨▓╨╕╤В╤М" ╨┐╨╛╨║╨░╨╖╨░╨╜╨░ ╨┤╨╗╤П librarian
+  
+00:02 +5 -1: Some tests failed.

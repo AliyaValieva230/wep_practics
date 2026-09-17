@@ -14,12 +14,14 @@ class AuthActions extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Center(
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 180),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               '${auth.user?.fullName ?? ""} • ${auth.user?.role.label ?? ""}',
               overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
           ),
         ),
@@ -83,7 +85,6 @@ class AppScaffold extends StatelessWidget {
               children: [
                 const SizedBox(height: 8),
                 ListTile(
-                  leading: const Icon(Icons.home_outlined),
                   title: const Text('Кабинет'),
                   onTap: () => context.go(role?.homeRoute ?? '/'),
                 ),

@@ -223,7 +223,6 @@ void main() {
     final gate = Completer<void>();
     final repo = _FakeBookRepo(items: const [], gate: gate);
     final notifier = BookListNotifier(repo);
-    // Начинаем загрузку, но не ждём — репозиторий ждёт нашего сигнала.
     notifier.load();
 
     try {
@@ -237,7 +236,6 @@ void main() {
 
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
 
-      // Отпускаем репозиторий, чтобы load завершился до dispose().
       gate.complete();
       await tester.pump();
       await tester.pump();
@@ -261,7 +259,7 @@ void main() {
         ],
       ));
       await notifier.load();
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('Книг не найдено'), findsOneWidget);
       expect(find.byType(CircularProgressIndicator), findsNothing);
@@ -285,7 +283,7 @@ void main() {
         ],
       ));
       await notifier.load();
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.text('Повторить'), findsOneWidget);
     } finally {
@@ -319,7 +317,7 @@ void main() {
               value: publisherNotifier),
         ],
       ));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       await tester.tap(find.text('Создать'));
       await tester.pump();
@@ -336,6 +334,10 @@ void main() {
 
   testWidgets('AuthorList: кнопка "Добавить" скрыта для reader',
       (tester) async {
+    tester.view.physicalSize = const Size(1400, 900);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+
     final auth = await _makeAuth(Role.reader);
     final notifier = AuthorListNotifier(_FakeAuthorRepo());
 
@@ -347,7 +349,7 @@ void main() {
           ChangeNotifierProvider<AuthorListNotifier>.value(value: notifier),
         ],
       ));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.byIcon(Icons.add), findsNothing);
     } finally {
@@ -358,6 +360,10 @@ void main() {
 
   testWidgets('AuthorList: кнопка "Добавить" показана для librarian',
       (tester) async {
+    tester.view.physicalSize = const Size(1400, 900);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+
     final auth = await _makeAuth(Role.librarian);
     final notifier = AuthorListNotifier(_FakeAuthorRepo());
 
@@ -369,7 +375,7 @@ void main() {
           ChangeNotifierProvider<AuthorListNotifier>.value(value: notifier),
         ],
       ));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       expect(find.byIcon(Icons.add), findsOneWidget);
     } finally {
