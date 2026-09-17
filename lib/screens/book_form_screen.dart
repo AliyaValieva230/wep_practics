@@ -186,8 +186,8 @@ class _BookFormScreenState extends State<BookFormScreen> {
     final total = int.tryParse(_copiesTotalController.text);
     final avail = int.tryParse(_copiesAvailableController.text);
     if (total != null && avail != null && avail > total) {
-      setState(
-          () => _serverErrors['copiesAvailable'] = 'Больше общего количества');
+      setState(() =>
+          _serverErrors['copiesAvailable'] = 'Больше общего количества');
       _formKey.currentState!.validate();
       return;
     }
@@ -320,6 +320,7 @@ class _BookFormScreenState extends State<BookFormScreen> {
                   ),
                   const SizedBox(height: 12),
                   DropdownButtonFormField<int>(
+                    key: ValueKey('publisher-$_publisherId'),
                     value: _publisherId,
                     decoration: InputDecoration(
                       labelText: 'Издательство',
@@ -328,9 +329,10 @@ class _BookFormScreenState extends State<BookFormScreen> {
                     ),
                     items: publishers
                         .map((p) => DropdownMenuItem(
-                            value: p.id,
-                            child:
-                                Text(p.name, overflow: TextOverflow.ellipsis)))
+                              value: p.id,
+                              child:
+                                  Text(p.name, overflow: TextOverflow.ellipsis),
+                            ))
                         .toList(),
                     onChanged: (v) => setState(() => _publisherId = v),
                     validator: (v) =>
