@@ -186,8 +186,8 @@ class _BookFormScreenState extends State<BookFormScreen> {
     final total = int.tryParse(_copiesTotalController.text);
     final avail = int.tryParse(_copiesAvailableController.text);
     if (total != null && avail != null && avail > total) {
-      setState(() =>
-          _serverErrors['copiesAvailable'] = 'Больше общего количества');
+      setState(
+          () => _serverErrors['copiesAvailable'] = 'Больше общего количества');
       _formKey.currentState!.validate();
       return;
     }

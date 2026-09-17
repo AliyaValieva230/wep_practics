@@ -65,7 +65,8 @@ GoRouter buildRouter(AuthNotifier auth) {
       GoRoute(path: '/forbidden', builder: (_, __) => const ForbiddenScreen()),
       GoRoute(
         path: '/my-loans',
-        redirect: (_, __) => auth.user?.role == Role.reader ? null : '/forbidden',
+        redirect: (_, __) =>
+            auth.user?.role == Role.reader ? null : '/forbidden',
         builder: (_, __) => FutureBuilder(
           future: reader.loadLibrary(),
           builder: (ctx, snap) {
@@ -96,7 +97,8 @@ GoRouter buildRouter(AuthNotifier auth) {
       ),
       GoRoute(
         path: '/admin',
-        redirect: (_, __) => auth.user?.role == Role.admin ? null : '/forbidden',
+        redirect: (_, __) =>
+            auth.user?.role == Role.admin ? null : '/forbidden',
         builder: (_, __) => FutureBuilder(
           future: admin.loadLibrary(),
           builder: (ctx, snap) {
@@ -156,8 +158,7 @@ GoRouter buildRouter(AuthNotifier auth) {
             GenreFormScreen(id: int.tryParse(s.pathParameters['id']!)),
       ),
       GoRoute(
-          path: '/publishers',
-          builder: (_, __) => const PublisherListScreen()),
+          path: '/publishers', builder: (_, __) => const PublisherListScreen()),
       GoRoute(
         path: '/publishers/new',
         redirect: (_, __) => auth.has(Role.librarian) ? null : '/forbidden',
